@@ -5,42 +5,58 @@ addEventListener('fetch', event => {
 async function handleRequest(request) {
   const { searchParams } = new URL(request.url)
   const country = searchParams.get('country') || getRandomCountry()
-  let address, name, gender, phone
+  let address = null, name = 'Unknown', gender = 'Unknown', phone = getRandomPhoneNumber(country)
 
-  for (let i = 0; i < 100; i++) {
-    const location = getRandomLocationInCountry(country)
-    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.lng}&zoom=18&addressdetails=1`
+  // 减少查询次数以避免超时或封IP
+  for (let i = 0; i < 30; i++) {
+    try {
+      const location = getRandomLocationInCountry(country)
+      const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.lng}&zoom=18&addressdetails=1`
+      const response = await fetch(apiUrl, {
+        headers: { 'User-Agent': 'Cloudflare Worker' }
+      })
 
-    const response = await fetch(apiUrl, {
-      headers: { 'User-Agent': 'Cloudflare Worker' }
-    })
-    const data = await response.json()
+      if (!response.ok) continue
 
-    if (data && data.address && data.address.house_number && data.address.road && (data.address.city || data.address.town)) {
-      address = formatAddress(data.address, country)
-      break
+      const data = await response.json()
+      if (data?.address?.house_number && data?.address?.road && (data?.address?.city || data?.address?.town)) {
+        address = formatAddress(data.address, country)
+        break
+      }
+    } catch (e) {
+      // 忽略错误，继续下一次
+      continue
     }
+  }
+
+  // 获取用户信息
+  try {
+    const userRes = await fetch('https://randomuser.me/api/')
+    if (userRes.ok) {
+      const userJson = await userRes.json()
+      if (userJson?.results?.length > 0) {
+        const user = userJson.results[0]
+        name = `${user.name.first} ${user.name.last}`
+        gender = user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
+      }
+    }
+  } catch (e) {
+    // fallback 数据已初始化，无需操作
   }
 
   if (!address) {
     return new Response('Failed to retrieve detailed address, please refresh the interface （检索详细地址失败，请刷新界面）', { status: 500 })
   }
 
-  const userData = await fetch('https://randomuser.me/api/')
-  const userJson = await userData.json()
-  if (userJson && userJson.results && userJson.results.length > 0) {
-    const user = userJson.results[0]
-    name = `${user.name.first} ${user.name.last}`
-    gender = user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
-    phone = getRandomPhoneNumber(country)
-  } else {
-    name = getRandomName()
-    gender = "Unknown"
-    phone = getRandomPhoneNumber(country)
-  }
+  // 返回 HTML 页面
+  return new Response(generateHtml(name, gender, phone, address, country), {
+    headers: { 'content-type': 'text/html;charset=UTF-8' },
+  })
+}
 
-const html = `
-<!DOCTYPE html>
+
+function generateHtml(name, gender, phone, address, country) {
+  return `<!DOCTYPE html>
 <html>
 <head>
   <title>Real Address Generator</title>
@@ -266,13 +282,10 @@ const html = `
 </body>
 </html>
 `
-
-
-
-  return new Response(html, {
-    headers: { 'content-type': 'text/html;charset=UTF-8' },
-  })
 }
+
+
+
 
 function getRandomLocationInCountry(country) {
   const countryCoordinates = {

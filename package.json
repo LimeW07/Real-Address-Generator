@@ -1,0 +1,13 @@
+{
+    "name": "real-address-worker",
+    "version": "1.0.0",
+    "type": "module",
+    "devDependencies": {
+      "wrangler": "^2.10.0"
+    },
+    "scripts": {
+      "deploy": "wrangler publish",
+      "dev": "wrangler dev"
+    }
+  }
+  

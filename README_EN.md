@@ -6,9 +6,9 @@ This is a real address generator based on Cloudflare Workers. You can generate r
 
 ## Demo
 
-![](https://github.com/Adonis142857/Real-Address-Generator/blob/main/example.png)
+![](https://github.com/LimeW07/Real-Address-Generator/blob/main/example.png)
 
-Use online: [https://realaddress.fuyiran.com/](https://realaddress.fuyiran.com/)
+Use online: [https://address.cylink.tech/](https://address.cylink.tech/)
 
 ## Features
 
@@ -32,7 +32,7 @@ To deploy this website, you need to use Cloudflare Workers to deploy the provide
 
 ## Feedback
 
-If you encounter any issues during use, please submit them as [issues](https://github.com/Adonis142857/Real-Address-Generator/issues).
+If you encounter any issues during use, please submit them as [issues](https://github.com/LimeW07/Real-Address-Generator/issues).
 
 ## License
 
@@ -40,4 +40,4 @@ This project is licensed under the MIT License.
 
 ## Copyright
 
-The original version is from chatgpt.org.uk, modified by Adonis142857.
+The original version is from chatgpt.org.uk, modified by Adonis142857, and then modified by LimeW07 to optimize access speed.

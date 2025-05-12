@@ -5,9 +5,9 @@
 这是一个基于 Cloudflare Workers 的真实地址生成器。您可以生成不同国家地图上真实的随机地址。
 
 ## 演示地址
-![](https://github.com/Adonis142857/Real-Address-Generator/blob/main/example.png)
+![](https://github.com/LimeW07/Real-Address-Generator/blob/main/example.png)
 
-在线使用：[https://realaddress.fuyiran.com/](https://realaddress.fuyiran.com/)
+在线使用：[https://address.cylink.tech/](https://address.cylink.tech/)
 
 ## 功能
 
@@ -31,7 +31,7 @@
 
 ## 反馈
 
-如果您在使用过程中遇到任何问题，请提交 [issues](https://github.com/Adonis142857/Real-Address-Generator/issues)。
+如果您在使用过程中遇到任何问题，请提交 [issues](https://github.com/LimeW07/Real-Address-Generator/issues)。
 
 ## 许可证
 
@@ -39,4 +39,4 @@
 
 ## 版权声明
 
-初代版本来自 chatgpt.org.uk，由 Adonis142857 进行修改。
+初代版本来自 chatgpt.org.uk，由 Adonis142857 进行修改, 由 LimeW07 进行二次修改, 优化了访问速度。
