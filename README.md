@@ -40,3 +40,7 @@
 ## 版权声明
 
 初代版本来自 chatgpt.org.uk，由 Adonis142857 进行修改, 由 LimeW07 进行二次修改, 优化了访问速度。
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=LimeW07/Real-Address-Generator&type=Date)](https://www.star-history.com/#LimeW07/Real-Address-Generator&Date)

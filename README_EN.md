@@ -41,3 +41,7 @@ This project is licensed under the MIT License.
 ## Copyright
 
 The original version is from chatgpt.org.uk, modified by Adonis142857, and then modified by LimeW07 to optimize access speed.
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=LimeW07/Real-Address-Generator&type=Date)](https://www.star-history.com/#LimeW07/Real-Address-Generator&Date)
