@@ -208,7 +208,7 @@ function generateHtml(name, gender, phone, address, country) {
     </table>
     </div>
   <div class="footer">
-  Original version by chatgpt.org.uk, modified by Adonis142857 ｜ <a href="https://github.com/Adonis142857/Real-Address-Generator" target="_blank"><img src="https://pic.imgdb.cn/item/66e7ab36d9c307b7e9cefd24.png" alt="GitHub" style="width: 20px; height: 20px; vertical-align: middle; position: relative; top: -3px;"></a>
+  Original version by chatgpt.org.uk, modified by LimeW07 ｜ <a href="https://github.com/LimeW07/Real-Address-Generator" target="_blank"><img src="https://pic.imgdb.cn/item/66e7ab36d9c307b7e9cefd24.png" alt="GitHub" style="width: 20px; height: 20px; vertical-align: middle; position: relative; top: -3px;"></a>
 </div>
 
 
